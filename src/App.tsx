@@ -1,28 +1,21 @@
-import image from './assets/0-floor.png';
-import svgOverlay from './assets/0-floor.svg';
+// src/App.tsx
+import React from 'react';
+import FilterPanel from './components/FilterPanel';
+import InfoPopup from './components/InfoPopup';
+import MapOverlay from './components/MapOverlay';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <img style={{
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#272727',
-        objectFit: 'cover'
-      }} src={image} />
-      <img style={{
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover'
-      }} src={svgOverlay} />
-    </>
-  )
-}
+    <div className="flex space-x-4 p-4">
+      <FilterPanel />
+      <div className="relative w-full">
+        <MapOverlay />
+        <div className="absolute bottom-4 right-4">
+          <InfoPopup unitNumber="Unit 104" unitType="Commercial" totalArea="53 M²" price="0 EGP" availability="Available" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default App;
